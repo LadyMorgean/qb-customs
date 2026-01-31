@@ -7,6 +7,7 @@ files {
     'html/index.html',
     'html/css/menu.css',
     'html/js/ui.js',
+    'html/imgs/logo.png',
     'html/sounds/wrench.ogg',
     'html/sounds/respray.ogg'
 }
@@ -25,7 +26,8 @@ client_scripts {
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
-    'server/sv_bennys.lua'
+    'server/sv_bennys.lua',
+    'server/bennys_toggle.lua',
 }
 
 lua54 'yes'
