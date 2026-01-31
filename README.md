@@ -1,3 +1,7 @@
+Re-written by Lady Morgean to be freely edited by anyone that wants shops to be turned off when Mechanics are on duty can be modified how people wish lots of locations are added in addition to base for our city these modifications can be deleted or used however someone wishes but written for the intent of use at ArrivalRP
+
+Modification of Joshua's script below is his infomation:
+
 # qb-customs
 Vehicle Customization For QB-Core
 
