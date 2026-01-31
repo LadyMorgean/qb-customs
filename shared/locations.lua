@@ -4,6 +4,7 @@
         label = 'Bennys Motorworks', -- Text label for anything that wants it
         welcomeLabel = "Welcome to Benny's Motorworks!", -- Welcome label in the UI
         enabled = true, -- If the location can be used at all
+        isBennys = true, -- Set this to any location you want to be effected by Mechanics on Duty to True if you want the location not to be effected set to false or delete the line
     },
     blip = {
         label = 'Bennys Motorworks',
@@ -53,13 +54,16 @@ Vehicle Classes:
  ]]
 
 Config = Config or {}
-
 Config.Locations = {
+
+-- Client-side: Apply the logic (0 mechanics = ON, 2+ mechanics = OFF)
+
     ['Innocence'] = {
         settings = {
             label = 'Bennys Motorworks',
             welcomeLabel = "Welcome to Benny's Motorworks!",
             enabled = true,
+            isBennys = true,
         },
         blip = {
             label = 'Bennys Motorworks',
@@ -100,6 +104,7 @@ Config.Locations = {
             label = 'Bennys Motorworks',
             welcomeLabel = "Welcome to Benny's Motorworks!",
             enabled = true,
+            isBennys = true,
         },
         blip = {
             label = 'Bennys Motorworks',
@@ -140,6 +145,7 @@ Config.Locations = {
             label = 'Customs Motorworks',
             welcomeLabel = "Welcome to Customs Motorworks!",
             enabled = true,
+            isBennys = true, 
         },
         blip = {
             label = 'Bennys Motorworks',
@@ -180,6 +186,7 @@ Config.Locations = {
             label = 'Harmony Motorworks',
             welcomeLabel = "Welcome to Harmony Motorworks!",
             enabled = true,
+            isBennys = true,
         },
         blip = {
             label = 'Bennys Motorworks',
@@ -220,6 +227,7 @@ Config.Locations = {
             label = 'Hayes Motorworks',
             welcomeLabel = "Welcome to Hayes Motorworks!",
             enabled = true,
+            isBennys = true,
         },
         blip = {
             label = 'Bennys Motorworks',
@@ -259,6 +267,7 @@ Config.Locations = {
             label = 'Billys Motorworks',
             welcomeLabel = "Welcome to Billys Motorworks!",
             enabled = true,
+            isBennys = true,
         },
         blip = {
             label = 'Bennys Motorworks',
@@ -299,6 +308,7 @@ Config.Locations = {
             label = 'Tunershop',
             welcomeLabel = "Welcome to the Tunershop!",
             enabled = true,
+            isBennys = true,
         },
         blip = {
             label = 'Tunershop',
@@ -341,6 +351,7 @@ Config.Locations = {
             label = 'MRPD Motorworks',
             welcomeLabel = "Welcome to MRPD Motorworks!",
             enabled = true,
+            isBennys = true,
         },
         categories = {
             repair = true,
@@ -362,7 +373,7 @@ Config.Locations = {
             { coords = vector3(450.09, -975.92, 25.7), length = 9.0, width = 4.0, heading = 90.0, minZ = 24.5, maxZ = 28.5 },
             { coords = vector3(435.53, -975.97, 25.7), length = 9.0, width = 4.0, heading = 90.0, minZ = 24.5, maxZ = 28.5 },
         }
-    },
+    }, 
 
     ['Pillbox'] = {
         settings = {
@@ -387,8 +398,118 @@ Config.Locations = {
             allowedClasses = { 18 },
         },
         zones = {
-            { coords = vector3(337.2, -579.6, 28.8), length = 9.4, width = 4.2, heading = 340.0, minZ = 27.5, maxZ = 31.5 },
-            { coords = vector3(340.38, -570.8, 28.8), length = 8.8, width = 4.2, heading = 340.0, minZ = 27.5, maxZ = 31.5 },
+            { coords = vector3(-441.57, -323.51, 25.43), length = 9.4, width = 4.2, heading = 340.0, minZ = 24.5, maxZ = 29.5 },
+            { coords = vector3(-451.38, -329.9, 25.43), length = 8.8, width = 4.2, heading = 340.0, minZ = 24.5, maxZ = 29.5 },
         }
     },
+
+    ['MRPD'] = {
+        settings = {
+            label = 'MRPD Motorworks',
+            welcomeLabel = "Welcome to MRPD Motorworks!",
+            enabled = true,
+        },
+        categories = {
+            repair = true,
+            respray = true,
+            liveries = true,
+            tint = true,
+            extras = true,
+            plate = false,
+            cosmetics = true,
+        },
+        drawtextui = {
+            text = "MRPD Motorworks",
+        },
+        restrictions = {
+            job = { 'lspd', 'lscso', 'sasp' },
+            allowedClasses = { 18 },
+        },
+        zones = {
+            { coords = vector3(450.289917, -976.044006, 25.364691), length = 9.0, width = 4.0, heading = 90.488250732422, minZ = 24.5, maxZ = 28.5 },
+            { coords = vector3(435.655640, -976.195740, 25.365108), length = 9.0, width = 4.0, heading = 90.488250732422, minZ = 24.5, maxZ = 28.5 },
+        }
+    },
+    ['SSSO'] = {
+        settings = {
+            label = 'MRPD Motorworks',
+            welcomeLabel = "Welcome to MRPD Motorworks!",
+            enabled = true,
+        },
+        categories = {
+            repair = true,
+            respray = true,
+            liveries = true,
+            tint = true,
+            extras = true,
+            plate = false,
+            cosmetics = true,
+        },
+        drawtextui = {
+            text = "MRPD Motorworks",
+        },
+        restrictions = {
+            job = { 'lspd', 'lscso', 'sasp' },
+            allowedClasses = { 18 },
+        },
+        zones = {
+            { coords = vector3(1857.943726, 3716.110352, 32.828079), length = 9.0, width = 4.0, heading = 30.055334091187, minZ = 31.5, maxZ = 34.5 },
+            { coords = vector3(1853.765503, 3713.950195, 32.797466), length = 9.0, width = 4.0, heading = 30.055334091187, minZ = 31.5, maxZ = 34.5 },
+        }
+    },
+    ['TLSHS'] = {
+        settings = {
+            label = 'MRPD Motorworks',
+            welcomeLabel = "Welcome to MRPD Motorworks!",
+            enabled = true,
+        },
+        categories = {
+            repair = true,
+            respray = true,
+            liveries = true,
+            tint = true,
+            extras = true,
+            plate = false,
+            cosmetics = true,
+        },
+        drawtextui = {
+            text = "MRPD Motorworks",
+        },
+        restrictions = {
+            job = { 'lspd', 'lscso', 'sasp' },
+            allowedClasses = { 18 },
+        },
+        zones = {
+            { coords = vector3(1543.980469, 803.593933, 76.816833), length = 9.0, width = 4.0, heading = 150.8768157959, minZ = 75.5, maxZ = 78.5 },
+            { coords = vector3(1548.384155, 805.233826, 76.802254), length = 9.0, width = 4.0, heading = 150.8768157959, minZ = 75.5, maxZ = 78.5 },
+        }
+    },
+    ['EVOC'] = {
+        settings = {
+            label = 'EVOC Motorworks',
+            welcomeLabel = "Welcome to EVOC Motorworks!",
+            enabled = true,
+        },
+        categories = {
+            repair = true,
+            respray = true,
+            liveries = true,
+            tint = true,
+            extras = true,
+            plate = false,
+            cosmetics = true,
+        },
+        drawtextui = {
+            text = "MRPD Motorworks",
+        },
+        restrictions = {
+            job = { 'lspd', 'lscso', 'sasp' },
+            allowedClasses = { 18 },
+        },
+        zones = {
+            { coords = vector3(-1979.68, 2872.93, 32.81), length = 9.0, width = 4.0, heading = 6.33, minZ = 31.5, maxZ = 33.5 },
+            { coords = vector3(-1979.8, 2862.07, 32.81), length = 9.0, width = 4.0, heading = 6.33, minZ = 31.5, maxZ = 33.5 },
+        }
+    },
+
 }
