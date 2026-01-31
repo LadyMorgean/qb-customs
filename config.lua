@@ -7,6 +7,26 @@ Config.UseRadial = false -- Will use qb-radial menu for entering instead of pres
 Config.allowGovPlateIndex = false -- Setting this to true will allow all vehicles to purchase gov plate index "Blue on White #3" (only for emergency vehicles otherwise)
 maxVehiclePerformanceUpgrades = 0 -- | All Upgrades: 0 | No Upgrades: -1 | Can be -1 to 4
 
+Config.DynamicBennys = true
+
+Config.MechanicJobName = 'mechanic'      -- job name in qb-core
+Config.DisableBennysWhenOnDutyAtLeast = 2 -- >= 2 mechanics => disable bennys
+Config.BennysStateCheckSeconds = 15       -- how often to recalc
+-- Which locations should be treated as "Benny's" for the dynamic toggle.
+-- If true, ALL qb-customs locations will be disabled/enabled by your bennys_toggle.lua.
+-- If you only want specific shops, set this to false and fill out Config.BennysLocations below.
+Config.TreatAllLocationsAsBennys = true
+
+-- Optional: only used when TreatAllLocationsAsBennys = false
+-- Keys must match the location keys from shared/locations.lua (Config.Locations table keys)
+-- Example:
+-- Config.BennysLocations = {
+--     ['Bennys'] = true,
+--     ['BennysSouth'] = true,
+-- }
+Config.BennysLocations = Config.BennysLocations or {}
+
+
 -- ADJUST PRICING
 vehicleCustomisationPrices = {
     cosmetics = {price = 400},
