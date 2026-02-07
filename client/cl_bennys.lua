@@ -719,6 +719,15 @@ end
 
 function EnterLocation(override)
     local locationData = Config.Locations[CustomsData.location]
+    -- Hard block: prevent entry for Bennys locations even if opened via override
+    local locKey = (next(CustomsData) and CustomsData.location) or (override and override.location)
+    local ld = locKey and Config.Locations[locKey] or locationData
+    if ld and ld.settings and ld.settings.isBennys and GlobalState.qb_customs_bennysEnabled == false then
+        QBCore.Functions.Notify("Benny's is currently closed.", "error")
+        ExitBennys()
+        return
+    end
+
     local categories = (override and override.categories) or {
         repair = false,
         mods = false,
@@ -888,7 +897,7 @@ function CheckRestrictions(location)
 
     local isEnabled = _location.settings.enabled
 
-    -- Option A: Only block locations marked as Bennys when mechanics are on duty
+    -- Hard block: if this location is marked as Bennys, respect the server toggle
     if _location.settings and _location.settings.isBennys then
         if GlobalState.qb_customs_bennysEnabled == false then
             return false
@@ -1022,6 +1031,15 @@ end)
 
 RegisterNetEvent('qb-customs:client:EnterCustoms', function(override)
     if not override.coords or not override.heading then override = nil end
+
+    -- Hard block: deny Bennys even when opened via override
+    local locKey = (next(CustomsData) and CustomsData.location) or (override and override.location)
+    if locKey and Config.Locations[locKey] and Config.Locations[locKey].settings and Config.Locations[locKey].settings.isBennys then
+        if GlobalState.qb_customs_bennysEnabled == false then
+            QBCore.Functions.Notify("Benny's is currently closed.", "error")
+            return
+        end
+    end
     if not IsPedInAnyVehicle(PlayerPedId(), false) or isPlyInBennys or (not next(CustomsData) and not override) then return end
     if not override and next(CustomsData) and not CheckRestrictions(CustomsData.location) then return end
 
